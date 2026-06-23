@@ -1,0 +1,33 @@
+.tabs { display: flex; gap: 0; border-bottom: 1px solid rgba(45,43,107,0.15); max-width: 800px; margin: 3rem auto 0; padding: 0 3rem; }
+.tab { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.8rem 1.5rem 0.8rem 0; background: none; border: none; cursor: pointer; color: #6B6A8A; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: color 0.2s, border-color 0.2s; }
+.tab:hover { color: #2D2B6B; }
+.tabActive { color: #2D2B6B; border-bottom-color: #2D2B6B; }
+.content { max-width: 800px; margin: 0 auto; padding: 3rem 3rem 6rem; }
+
+.poemList { display: flex; flex-direction: column; gap: 3rem; }
+.poemCard { background: white; border-radius: 4px; border: 1px solid rgba(45,43,107,0.08); padding: 2.5rem 3rem; }
+.poemMeta { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: #6B6A8A; margin-bottom: 1.2rem; }
+.poemTitle { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 600; color: #2D2B6B; margin-bottom: 1.8rem; }
+.poemBody { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.05rem; line-height: 2; color: #1A1A2E; white-space: pre-line; font-weight: 400; }
+.poemNote { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(45,43,107,0.08); font-size: 0.88rem; color: #6B6A8A; }
+
+.essayList { display: flex; flex-direction: column; gap: 2rem; }
+.essayCard { padding: 2rem 0; border-bottom: 1px solid rgba(45,43,107,0.1); }
+.essayCard:last-child { border-bottom: none; }
+.essayDate { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.12em; color: #6B6A8A; margin-bottom: 0.6rem; }
+.essayTitle { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 600; color: #1A1A2E; margin-bottom: 0.6rem; }
+.essayExcerpt { font-size: 0.95rem; color: #6B6A8A; max-width: 540px; }
+.essayLink { display: inline-block; margin-top: 1rem; font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.1em; color: #2D2B6B; text-decoration: none; border-bottom: 1px solid #2D2B6B; padding-bottom: 2px; }
+
+.aboutBlock { background: #2D2B6B; border-radius: 4px; padding: 3rem; }
+.aboutBlock p { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.1rem; line-height: 1.9; color: rgba(240,239,248,0.9); margin-bottom: 1rem; }
+.aboutBlock p:last-of-type { margin-bottom: 0; }
+.influences { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+.infTag { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; padding: 0.3rem 0.7rem; border: 1px solid rgba(240,239,248,0.3); border-radius: 999px; color: rgba(240,239,248,0.7); }
+
+@media (max-width: 640px) {
+  .tabs { padding: 0 1.5rem; }
+  .content { padding: 2rem 1.5rem 5rem; }
+  .poemCard { padding: 2rem 1.5rem; }
+  .aboutBlock { padding: 2rem 1.5rem; }
+}

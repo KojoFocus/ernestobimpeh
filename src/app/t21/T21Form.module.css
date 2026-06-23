@@ -1,0 +1,21 @@
+.section { background: #F5FAFA; border-top: 1px solid rgba(30,74,74,0.1); border-bottom: 1px solid rgba(30,74,74,0.1); padding: 5rem 3rem; }
+.inner { max-width: 760px; margin: 0 auto; }
+.sectionLabel { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: #4A7070; margin-bottom: 1.2rem; }
+.sectionH { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 600; color: #1E4A4A; margin-bottom: 1.5rem; }
+.sectionP { font-size: 1rem; color: #2A4A4A; max-width: 560px; line-height: 1.85; margin-bottom: 2rem; }
+.form { margin-top: 2.5rem; }
+.optLabel { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: #4A7070; margin-bottom: 0.8rem; }
+.opts { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2rem; }
+.opt { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.08em; padding: 0.5rem 1.1rem; border: 1.5px solid rgba(30,74,74,0.2); border-radius: 999px; background: none; color: #1E4A4A; cursor: pointer; transition: all 0.2s; }
+.opt:hover { background: #1E4A4A; color: #EEF4F4; border-color: #1E4A4A; }
+.optSelected { background: #1E4A4A; color: #EEF4F4; border-color: #1E4A4A; }
+.formGroup { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.2rem; }
+.formGroup label { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: #4A7070; }
+.formGroup input, .formGroup textarea { padding: 0.75rem 1rem; border: 1.5px solid rgba(30,74,74,0.15); border-radius: 3px; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; color: #0D2020; background: white; outline: none; transition: border-color 0.2s; }
+.formGroup input:focus, .formGroup textarea:focus { border-color: #1E4A4A; }
+.formGroup textarea { min-height: 120px; resize: vertical; }
+.note { font-size: 0.82rem; color: #4A7070; margin-bottom: 1.5rem; line-height: 1.7; }
+.submitBtn { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.12em; padding: 0.9rem 2rem; background: #1E4A4A; color: #EEF4F4; border: none; border-radius: 3px; cursor: pointer; transition: opacity 0.2s; }
+.submitBtn:hover { opacity: 0.85; }
+.success { padding: 1.5rem; background: #D5E8E8; border-radius: 3px; font-size: 0.9rem; color: #1E4A4A; line-height: 1.7; }
+@media (max-width: 640px) { .section { padding: 3rem 1.5rem; } }

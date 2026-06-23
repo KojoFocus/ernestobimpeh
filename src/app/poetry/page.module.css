@@ -1,0 +1,8 @@
+.main { background: #F0EFF8; color: #1A1A2E; min-height: 100vh; }
+.hero { min-height: 60vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 9rem 3rem 4rem; max-width: 800px; margin: 0 auto; }
+.eyebrow { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.2em; color: #6B6A8A; text-transform: uppercase; margin-bottom: 1.2rem; }
+.h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 400; font-style: italic; color: #2D2B6B; line-height: 1.15; margin-bottom: 1.5rem; }
+.sub { font-size: 1rem; color: #6B6A8A; max-width: 460px; line-height: 1.8; }
+.footer { border-top: 1px solid rgba(45,43,107,0.1); padding: 2rem 3rem; max-width: 800px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.footer p, .footer a { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.08em; color: #6B6A8A; text-decoration: none; }
+@media (max-width: 640px) { .hero { padding: 8rem 1.5rem 3rem; } .footer { padding: 1.5rem; } }

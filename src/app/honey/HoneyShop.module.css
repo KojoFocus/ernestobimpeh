@@ -1,0 +1,19 @@
+.wrap { max-width: 900px; margin: 0 auto; padding: 5rem 3rem; }
+.sectionLabel { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: #7A6530; margin-bottom: 1.2rem; }
+.sectionH { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 600; color: #2A1F00; margin-bottom: 1.5rem; }
+.sectionP { font-size: 1rem; color: #7A6530; max-width: 560px; line-height: 1.8; margin-bottom: 2.5rem; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1.2rem; }
+.card { background: white; border: 1px solid rgba(166,124,0,0.12); border-radius: 4px; overflow: hidden; transition: transform 0.2s, border-color 0.2s; }
+.card:hover { transform: translateY(-3px); border-color: #D4A017; }
+.img { height: 160px; display: flex; align-items: center; justify-content: center; font-size: 4rem; }
+.pClassic { background: linear-gradient(135deg, #FFF8E7, #F5E6B0); }
+.pDark    { background: linear-gradient(135deg, #F0E0A0, #C8960A); }
+.pWild    { background: linear-gradient(135deg, #E8F0E0, #B8CC80); }
+.pComb    { background: linear-gradient(135deg, #FFF0D0, #E8C060); }
+.info { padding: 1.2rem 1.5rem; }
+.name { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 600; color: #2A1F00; margin-bottom: 0.3rem; }
+.desc { font-size: 0.85rem; color: #7A6530; margin-bottom: 0.8rem; }
+.price { font-family: 'DM Mono', monospace; font-size: 0.85rem; color: #A67C00; font-weight: 500; }
+.btn { display: block; width: 100%; margin-top: 1rem; padding: 0.6rem; background: #2A1F00; color: #FBF6E8; border: none; border-radius: 2px; font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.1em; cursor: pointer; text-decoration: none; text-align: center; transition: opacity 0.2s; }
+.btn:hover { opacity: 0.8; }
+@media (max-width: 640px) { .wrap { padding: 3rem 1.5rem; } }

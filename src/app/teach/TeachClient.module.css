@@ -1,0 +1,44 @@
+.subjectsWrap { max-width: 960px; margin: 0 auto; padding: 5rem 3rem; }
+.sectionLabel { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: #7A4A55; margin-bottom: 1.2rem; }
+.sectionH { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 600; color: #1F0A10; margin-bottom: 2rem; }
+.sectionP { font-size: 1rem; color: #7A4A55; max-width: 540px; line-height: 1.8; margin-bottom: 2rem; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
+.card { background: white; border: 1.5px solid rgba(107,45,62,0.1); border-radius: 4px; padding: 2rem 1.8rem; cursor: pointer; transition: transform 0.2s, border-color 0.2s; }
+.card:hover { transform: translateY(-3px); border-color: #6B2D3E; }
+.cardSelected { background: #6B2D3E; transform: translateY(-3px); border-color: #6B2D3E; }
+.cardSelected .cardTitle, .cardSelected .cardLevel, .cardSelected .cardDesc { color: white; }
+.cardSelected .cardLevel { opacity: 0.65; }
+.icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+.cardTitle { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 600; color: #6B2D3E; margin-bottom: 0.4rem; }
+.cardLevel { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; color: #7A4A55; text-transform: uppercase; margin-bottom: 0.6rem; }
+.cardDesc { font-size: 0.88rem; color: #7A4A55; line-height: 1.6; }
+.topicDetail { background: #FBF5F6; border: 1px solid rgba(107,45,62,0.1); border-radius: 4px; padding: 2.5rem; margin-top: 1.5rem; }
+.topicTitle { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: #6B2D3E; margin-bottom: 1rem; }
+.topicList { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.topicPill { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.08em; padding: 0.3rem 0.8rem; background: #EDD8DE; color: #6B2D3E; border-radius: 999px; }
+.howStrip { background: #6B2D3E; border-radius: 4px; padding: 3rem; margin: 0 3rem 0; max-width: 960px; margin-left: auto; margin-right: auto; }
+.sectionLabelLight { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(247,240,242,0.5); margin-bottom: 1rem; }
+.sectionHLight { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 600; color: white; margin-bottom: 2rem; }
+.steps { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1.5rem; }
+.step { display: flex; gap: 1rem; align-items: flex-start; }
+.stepNum { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-style: italic; color: rgba(247,240,242,0.3); line-height: 1; flex-shrink: 0; }
+.stepTitle { font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500; color: white; margin-bottom: 0.3rem; }
+.stepDesc { font-size: 0.82rem; color: rgba(247,240,242,0.6); line-height: 1.6; }
+.bookingWrap { max-width: 960px; margin: 5rem auto 0; padding: 0 3rem 5rem; }
+.form { background: white; border: 1px solid rgba(107,45,62,0.1); border-radius: 4px; padding: 3rem; margin-top: 2rem; }
+.formRow { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.2rem; }
+.formGroup { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.2rem; }
+.formGroup label { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: #7A4A55; }
+.formGroup input, .formGroup select, .formGroup textarea { padding: 0.75rem 1rem; border: 1.5px solid rgba(107,45,62,0.15); border-radius: 3px; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; color: #1F0A10; background: #F7F0F2; transition: border-color 0.2s; outline: none; }
+.formGroup input:focus, .formGroup select:focus, .formGroup textarea:focus { border-color: #6B2D3E; }
+.formGroup textarea { min-height: 100px; resize: vertical; }
+.submitBtn { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.12em; padding: 0.9rem 2rem; background: #6B2D3E; color: white; border: none; border-radius: 3px; cursor: pointer; transition: opacity 0.2s; }
+.submitBtn:hover { opacity: 0.85; }
+.success { padding: 1.5rem; background: #EDD8DE; border-radius: 3px; font-family: 'DM Mono', monospace; font-size: 0.8rem; color: #6B2D3E; letter-spacing: 0.06em; }
+@media (max-width: 640px) {
+  .subjectsWrap { padding: 3rem 1.5rem; }
+  .howStrip { margin: 0 1.5rem; padding: 2rem 1.5rem; }
+  .bookingWrap { padding: 0 1.5rem 3rem; }
+  .formRow { grid-template-columns: 1fr; }
+  .form { padding: 2rem 1.5rem; }
+}

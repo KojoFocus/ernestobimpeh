@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400;1,600&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ── Shared nav ── */
+.site-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 1.1rem 3rem;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.nav-back {
+  font-family: 'DM Mono', monospace; font-size: 0.7rem;
+  letter-spacing: 0.14em; text-decoration: none;
+  text-transform: uppercase; opacity: 0.8; transition: opacity 0.2s;
+}
+.nav-back:hover { opacity: 1; }
+.nav-title {
+  font-family: 'DM Mono', monospace; font-size: 0.7rem;
+  letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.4;
+}
+
+/* ── Shared footer ── */
+.site-footer {
+  border-top: 1px solid rgba(0,0,0,0.08);
+  padding: 2rem 3rem;
+  margin: 0 auto;
+  display: flex; justify-content: space-between;
+  flex-wrap: wrap; gap: 1rem;
+}
+.site-footer p, .site-footer a {
+  font-family: 'DM Mono', monospace; font-size: 0.68rem;
+  letter-spacing: 0.08em; text-decoration: none;
+}
+
+/* ── Scroll reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+@media (max-width: 640px) {
+  .site-nav { padding: 1rem 1.5rem; }
+  .site-footer { padding: 1.5rem; }
+}
