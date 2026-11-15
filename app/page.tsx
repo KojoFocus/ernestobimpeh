@@ -1,3 +1,4 @@
+import CopyEmail from "@/components/CopyEmail";
 import Disclosure from "@/components/Disclosure";
 import SequenceTrace from "@/components/SequenceTrace";
 import SessionsChart from "@/components/SessionsChart";
@@ -245,6 +246,10 @@ export default function Home() {
             >
               Email me
             </a>
+            <CopyEmail
+              email={site.email}
+              className="rounded-[3px] border border-burette px-5 py-2.5 font-medium text-burette hover:bg-burette hover:text-white"
+            />
             {site.links.cv && (
               <a href={site.links.cv} className="rounded-[3px] border border-burette px-5 py-2.5 font-medium text-burette hover:bg-burette hover:text-white">
                 CV (PDF)
@@ -256,9 +261,6 @@ export default function Home() {
               </a>
             )}
           </div>
-          <p className="mt-4 text-sm text-muted">
-            Or write to <span className="select-all font-medium text-ink">{site.email}</span>
-          </p>
         </section>
       </main>
 
