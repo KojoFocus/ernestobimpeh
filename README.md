@@ -1,60 +1,28 @@
-# ernestobimpeh.com
+# Ernest Obimpeh research portfolio
 
-Personal site for Ernest Obimpeh — developer, poet, beekeeper, teacher, builder.
+Next.js 16 (App Router), TypeScript, Tailwind CSS 4, Motion.
 
-## Stack
-
-- **Next.js 14** (App Router)
-- **TypeScript**
-- **CSS Modules** (no Tailwind — intentional, keeps styles co-located)
-- **Google Fonts** — Playfair Display + DM Sans + DM Mono
-
-## Structure
-
-```
-src/
-  app/
-    page.tsx          → Hub homepage (the front door)
-    layout.tsx        → Root layout + metadata
-    poetry/           → Writing world (poems, essays, about)
-    honey/            → Focus Honey (shop + nature writing)
-    build/            → Dev work + Amdeli Web Solutions
-    teach/            → Teaching (web dev, maths, chemistry, physics + booking)
-    t21/              → Talk2Someone mental wellness initiative
-  components/
-    SiteNav.tsx       → Shared back-nav for all sub-pages
-    Reveal.tsx        → Scroll-reveal wrapper (IntersectionObserver)
-  styles/
-    globals.css       → Base reset + shared utilities
-```
-
-## Running locally
+## Run
 
 ```bash
 npm install
-npm run dev
+npm run dev      # http://localhost:3000
+npm run build    # production build
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+## Where things are
 
-## Deploying to Vercel
+- `lib/site.ts`: your name, role, email, links, supervisor and Elementa session counts. A link left empty hides its button.
+- `public/ernest-obimpeh-cv.pdf`: the CV behind the "CV (PDF)" button. To update it, replace this file with the new PDF (keep the same name) and redeploy.
+- `app/opengraph-image.tsx`: the preview card shown when the link is shared. `app/icon.svg` is the browser-tab icon.
+- `app/page.tsx`: all page copy and sections.
+- `components/SequenceTrace.tsx`: the animated hero figure (two students' action sequences). Edit the `lanes` array to change steps or notes.
+- `components/SessionsChart.tsx`: bar chart of sessions per practical.
+- `components/Disclosure.tsx`: the expandable "Research details".
+- `app/globals.css`: colour tokens (paper, ink, burette blue, endpoint pink) and the notebook grid.
 
-```bash
-npm run build
-```
+Motion respects the visitor's reduced-motion setting.
 
-Or connect the repo to Vercel — it auto-detects Next.js. Set the domain to `ernestobimpeh.com` in the Vercel dashboard.
+## Deploy
 
-## Key external links wired in
-
-- **Honey shop** → [focushoney.com](https://focushoney.com)
-- **Dev portfolio** → [amdeli-web-solutions.vercel.app](https://amdeli-web-solutions.vercel.app)
-- **Fiverr** → [fiverr.com/ernestobimpeh](https://fiverr.com/ernestobimpeh)
-- **Folio** → [folio-1cvo.vercel.app](https://folio-1cvo.vercel.app)
-- **Enfoni** → [enfoni-mocha.vercel.app](https://enfoni-mocha.vercel.app)
-
-## Pages to update with real content
-
-- `poetry/PoetryTabs.tsx` → swap in real poems and essays as you write them
-- `teach/TeachClient.tsx` → wire the booking form to an email API (Resend, Mailgun, etc.)
-- `t21/T21Form.tsx` → wire the reach-out form to a backend or form service
+Push to GitHub and import the repo on Vercel. No environment variables needed.

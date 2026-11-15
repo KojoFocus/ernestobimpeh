@@ -1,0 +1,15 @@
+{
+  "version": 1.1,
+  "atDirectives": [
+    {
+      "name": "@theme",
+      "description": "Defines Tailwind CSS theme variables used to generate utility classes.",
+      "references": [
+        {
+          "name": "Tailwind CSS @theme documentation",
+          "url": "https://tailwindcss.com/docs/functions-and-directives#theme"
+        }
+      ]
+    }
+  ]
+}
