@@ -14,9 +14,18 @@ export const site = {
   supervisor: "Samira Aggor-Woananu",
 };
 
-// Session counts for the three most-used practicals, early rollout to November 2026.
-export const sessions = [
-  { practical: "Acid-base titration", count: 346 },
-  { practical: "Microscope familiarization", count: 326 },
-  { practical: "Onion cell microscopy", count: 223 },
-];
+// Elementa usage snapshot. The live numbers keep moving, so treat this as a dated snapshot:
+// refresh it from the Elementa dashboard when you update your CV, and change `asOf` with it.
+export const elementa = {
+  asOf: "November 2026",
+  students: 81,
+  teachers: 15,
+  // Sessions in the five most-used practicals.
+  sessions: [
+    { practical: "Acid-base titration", count: 346 },
+    { practical: "Microscope familiarization", count: 326 },
+    { practical: "Onion cell microscopy", count: 228 },
+    { practical: "Simple pendulum", count: 104 },
+    { practical: "Stomata", count: 72 },
+  ],
+};

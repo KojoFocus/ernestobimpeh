@@ -2,7 +2,7 @@ import CopyEmail from "@/components/CopyEmail";
 import Disclosure from "@/components/Disclosure";
 import SequenceTrace from "@/components/SequenceTrace";
 import SessionsChart from "@/components/SessionsChart";
-import { site } from "@/lib/site";
+import { elementa, site } from "@/lib/site";
 
 const nav = [
   { href: "#research", label: "Research" },
@@ -121,14 +121,15 @@ export default function Home() {
                 my own school. Years later, I started building a virtual lab for students who face a
                 similar problem.
               </p>
-              <dl className="mt-6 flex gap-10">
+              <p className="mt-6 text-sm text-muted">Early rollout, as of {elementa.asOf}</p>
+              <dl className="mt-3 flex gap-10">
                 <div>
                   <dt className="text-sm text-muted">Students</dt>
-                  <dd className="tabular text-3xl font-semibold">81</dd>
+                  <dd className="tabular text-3xl font-semibold">{elementa.students}</dd>
                 </div>
                 <div>
                   <dt className="text-sm text-muted">Teachers</dt>
-                  <dd className="tabular text-3xl font-semibold">15</dd>
+                  <dd className="tabular text-3xl font-semibold">{elementa.teachers}</dd>
                 </div>
               </dl>
               <SessionsChart />

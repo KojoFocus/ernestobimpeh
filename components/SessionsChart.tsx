@@ -1,7 +1,10 @@
-import { sessions } from "@/lib/site";
+import { elementa } from "@/lib/site";
 
 export default function SessionsChart() {
+  const { sessions } = elementa;
   const max = Math.max(...sessions.map((s) => s.count));
+  const words = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"];
+  const howMany = words[sessions.length] || String(sessions.length);
   return (
     <figure className="mt-6 max-w-xl">
       <dl className="space-y-3">
@@ -16,9 +19,8 @@ export default function SessionsChart() {
         ))}
       </dl>
       <figcaption className="mt-3 text-sm text-muted">
-        Sessions recorded in the three most-used practicals during the early rollout, to November
-        2026. These counts
-        include some teacher demonstrations and say nothing yet about learning.
+        Sessions recorded in the {howMany} most-used practicals. These counts include some
+        teacher demonstrations and say nothing yet about learning.
       </figcaption>
     </figure>
   );
