@@ -6,10 +6,10 @@ import SessionsChart from "@/components/SessionsChart";
 import Shots from "@/components/Shots";
 import { elementa, shots, site } from "@/lib/site";
 
-// One story, told in order. Each section has a short menu word above its heading (so people
-// skimming can find their way) and a heading that picks up from the one before it (so people
-// reading can follow). Every section uses the same two-column row: when and what on the left,
-// the story on the right. Figures run across both columns.
+// One story, told in order, in a single reading column. Headings follow on from each other:
+// where I started, what I've been building, what I'm trying to understand, where I'm heading.
+// Text sits in the column; figures break out wider when they need room. Spacing, not lines,
+// separates the parts.
 const nav = [
   { href: "#start", label: "Background" },
   { href: "#work", label: "Work" },
@@ -17,51 +17,64 @@ const nav = [
   { href: "#contact", label: "Contact" },
 ];
 
-const textLink = "font-medium text-burette underline underline-offset-4 hover:no-underline";
+const col = "mx-auto w-full max-w-[44rem]";
+const body = "text-[1.0625rem] leading-[1.75] text-ink/80";
+const link = "underline decoration-ink/25 underline-offset-[5px] transition-colors hover:decoration-ink";
 
-function SectionHead({ label, title }: { label: string; title: string }) {
+function Section({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
   return (
-    <div className="mb-8">
-      <p className="text-sm font-medium uppercase tracking-[0.12em] text-muted">{label}</p>
-      <h2 className="mt-2 text-[clamp(1.8rem,3.4vw,2.6rem)] font-semibold leading-tight tracking-[-0.02em]">
+    <section id={id} className="mt-28 md:mt-40">
+      <h2 className={`${col} text-[1.625rem] font-semibold leading-tight tracking-[-0.02em] md:text-[1.875rem]`}>
         {title}
       </h2>
-    </div>
+      {children}
+    </section>
   );
 }
 
-function Row({
+function Meta({ items }: { items: React.ReactNode[] }) {
+  return (
+    <p className="tabular flex flex-wrap gap-x-2 text-sm text-muted">
+      {items.map((item, i) => (
+        <span key={i} className="flex gap-x-2">
+          {i > 0 && <span aria-hidden="true">·</span>}
+          {item}
+        </span>
+      ))}
+    </p>
+  );
+}
+
+// One thing in the story: a project, a degree, a piece of research. The negative margin gives the
+// highlight (when the milestone line jumps here) room to breathe without moving the text.
+function Entry({
   id,
   meta,
+  title,
   children,
-  rule = true,
 }: {
   id?: string;
-  meta?: React.ReactNode;
+  meta: React.ReactNode[];
+  title?: string;
   children: React.ReactNode;
-  rule?: boolean;
 }) {
   return (
-    <article
-      id={id}
-      className={`grid gap-3 py-10 md:grid-cols-[220px_1fr] md:gap-10 ${rule ? "border-t border-rule" : ""}`}
-    >
-      <div className="space-y-0.5 text-sm text-muted">{meta}</div>
-      <div className="max-w-[62ch]">{children}</div>
-    </article>
+    <div className={`${col} mt-12 first-of-type:mt-10`}>
+      <article id={id} className="-mx-4 -my-4 rounded-xl px-4 py-4">
+        <Meta items={meta} />
+        {title && <h3 className="mt-1.5 text-lg font-semibold tracking-[-0.01em]">{title}</h3>}
+        <div className={`mt-3 space-y-4 ${body}`}>{children}</div>
+      </article>
+    </div>
   );
 }
 
-function When({ children }: { children: React.ReactNode }) {
-  return <p className="font-medium text-ink">{children}</p>;
-}
-
-function Stat({ label, value }: { label: string; value: string | number }) {
+function Out({ href, children }: { href: string; children: React.ReactNode }) {
   return (
-    <div>
-      <dt className="text-sm text-muted">{label}</dt>
-      <dd className="tabular text-3xl font-semibold">{value}</dd>
-    </div>
+    <a href={href} className={link}>
+      {children}
+      <span aria-hidden="true"> ↗</span>
+    </a>
   );
 }
 
@@ -74,287 +87,243 @@ export default function Home() {
 
       <Header name={site.name} items={nav} />
 
-      <main id="main" className="mx-auto max-w-5xl px-6">
+      <main id="main" className="px-6">
         {/* Who I am */}
-        <section id="top" className="pb-16 pt-6 md:pb-20 md:pt-12">
-          <h1 className="text-[clamp(2.4rem,10vw,6rem)] font-semibold leading-[0.98] tracking-[-0.04em]">
+        <section id="top" className={`${col} pt-16 md:pt-24`}>
+          <h1 className="text-[clamp(2.4rem,5.5vw,3.5rem)] font-semibold leading-[1.02] tracking-[-0.035em]">
             {site.name}
           </h1>
-          <p className="mt-4 text-lg text-muted">
+          <p className="mt-3 text-[1.0625rem] text-muted">
             Laboratory scientist and software developer in {site.location}
           </p>
-          <p className="mt-6 max-w-[56ch] text-xl leading-relaxed text-ink/85">
+          <p className={`mt-8 max-w-[38rem] ${body}`}>
             I discovered computing while studying laboratory science. At the time, I was more
             interested in what I could build than in becoming a software developer. That
             hasn&rsquo;t changed much. These days, I am most curious about how computers can help us
             learn, do science and make sense of information.
           </p>
-          <div className="mt-12 lg:mt-14">
+          <div className="mt-16">
             <PathLine />
           </div>
         </section>
 
         {/* 1. Background */}
-        <section id="start" className="border-t border-ink pt-16">
-          <SectionHead label="Background" title="Where I started" />
-
-          <Row
-            id="ucc"
-            meta={
-              <>
-                <When>2014 to 2018</When>
-                <p>BSc Laboratory Technology</p>
-                <p>University of Cape Coast</p>
-              </>
-            }
-          >
-            <p className="leading-relaxed">
+        <Section id="start" title="Where I started">
+          <Entry id="ucc" meta={["2014–2018", "BSc Laboratory Technology"]} title="University of Cape Coast">
+            <p>
               My interest in software began around 2016, halfway through my degree. I did not even
-              have a laptop at the time, but I had plenty of ideas, like a way to identify plants
-              from a photograph or to find misplaced keys. I later found out that people were already
+              have a laptop at the time, but I had plenty of ideas, like a way to identify plants from
+              a photograph or to find misplaced keys. I later found out that people were already
               working on such things, which made me even more curious.
             </p>
-          </Row>
+          </Entry>
 
-          <Row
+          <Entry
             id="dissertation"
-            meta={
-              <>
-                <When>2018</When>
-                <p>Undergraduate dissertation</p>
-              </>
-            }
+            meta={["2018", "Undergraduate dissertation"]}
+            title="Pesticide residues in dried chilli pepper"
           >
-            <h3 className="text-2xl font-semibold tracking-tight">Pesticide residues in dried chilli pepper</h3>
-            <p className="mt-3 leading-relaxed">
+            <p>
               My degree also introduced me to research. For my final-year project, I travelled to
               Brewaniase, Kwadaso, Sunyani and Winneba to collect dried chilli pepper from farmers. I
               wanted to find out whether the peppers contained pesticide residues, and the Ghana
               Standards Authority provided technical assistance. No residues of the pesticides I
               looked for were detected.
             </p>
-            <dl className="mt-6 flex flex-wrap gap-x-10 gap-y-4">
-              <Stat label="Samples" value="120" />
-              <Stat label="Pesticides tested for" value="36" />
-              <Stat label="Regions" value="4" />
+            <dl className="flex flex-wrap gap-x-10 gap-y-3 pt-1">
+              {[
+                ["120", "samples"],
+                ["36", "pesticides tested for"],
+                ["4", "regions"],
+              ].map(([n, label]) => (
+                <div key={label} className="flex flex-col-reverse">
+                  <dt className="text-sm text-muted">{label}</dt>
+                  <dd className="tabular text-2xl font-semibold tracking-[-0.02em] text-ink">{n}</dd>
+                </div>
+              ))}
             </dl>
-            <details className="group mt-5">
-              <summary className="flex w-fit cursor-pointer list-none items-center gap-2 font-medium text-burette [&::-webkit-details-marker]:hidden">
-                <span aria-hidden="true" className="inline-block text-lg leading-none transition-transform group-open:rotate-45 motion-reduce:transition-none">
+            <details className="group">
+              <summary className="flex w-fit cursor-pointer list-none items-center gap-2 text-[0.9375rem] text-muted transition-colors hover:text-ink [&::-webkit-details-marker]:hidden">
+                <span aria-hidden="true" className="inline-block w-3 text-center transition-transform group-open:rotate-45 motion-reduce:transition-none">
                   +
                 </span>
                 How it was done
               </summary>
-              <p className="pt-3 leading-relaxed text-muted">
+              <p className="pl-5 pt-2 text-[0.9375rem] leading-relaxed text-muted">
                 The samples were analyzed using gas chromatography with electron capture detection
                 (GC-ECD), a lab technique that can pick up very small amounts of certain pesticides.
                 My supervisor was {site.supervisor} at the University of Cape Coast.
               </p>
             </details>
-          </Row>
+          </Entry>
 
-          <Row
+          <Entry
             id="labs"
-            meta={
-              <>
-                <When>After university</When>
-                <p>Hospital lab, then food quality control</p>
-                <p>GROW web development training</p>
-                <p>Focus Farms, beekeeping (2021)</p>
-              </>
-            }
+            meta={["2018 onwards", "Hospital lab", "Food quality control", "Beekeeping since 2021"]}
+            title="After university"
           >
-            <p className="leading-relaxed">
-              After university, I worked in a hospital laboratory and then in food quality control,
-              and kept teaching myself to build software. Later, I joined GROW, a web development
-              training programme run by Generation Ghana and MEST Africa and funded by the
-              Mastercard Foundation.
+            <p>
+              I worked in a hospital laboratory and then in food quality control, and kept teaching
+              myself to build software. Later, I joined GROW, a web development training programme run
+              by Generation Ghana and MEST Africa and funded by the Mastercard Foundation.
             </p>
-          </Row>
-        </section>
+          </Entry>
+        </Section>
 
         {/* 2. Work, newest first */}
-        <section id="work" className="border-t border-ink pt-16">
-          <SectionHead label="Work" title="What I've been building" />
-
-          <Row
+        <Section id="work" title="What I've been building">
+          <Entry
             id="pinn"
-            meta={
-              <>
-                <When>2026</When>
-                <p>Founder and developer</p>
-                <p className="pt-2">
-                  <a href={site.links.pinn} className={textLink}>
-                    pinnghana.com
-                  </a>
-                </p>
-              </>
-            }
+            meta={["2026", "Founder and developer", <Out key="l" href={site.links.pinn}>pinnghana.com</Out>]}
+            title="PINN Ghana"
           >
-            <h3 className="text-2xl font-semibold tracking-tight">PINN Ghana</h3>
-            <p className="mt-3 leading-relaxed">
+            <p>
               What if we had a better way to collect and make sense of information about our roads in
               Ghana? PINN is my attempt to explore that question. Road users report potholes and
-              other hazards with their location and photos. The reports appear on a map, and each
-              one is tracked until the right authority deals with it.
+              other hazards with their location and photos. The reports appear on a map, and each one
+              is tracked until the right authority deals with it.
             </p>
             <Shots shots={shots.pinn} layout="phones" />
-          </Row>
+          </Entry>
 
-          <Row
+          <Entry
             id="elementa"
-            meta={
-              <>
-                <When>2025 to present</When>
-                <p>Founder and lead developer</p>
-                <p className="pt-2">
-                  <a href={site.links.elementa} className={textLink}>
-                    elementalabsafrica.com
-                  </a>
-                </p>
-              </>
-            }
+            meta={[
+              "2025–present",
+              "Founder and lead developer",
+              <Out key="l" href={site.links.elementa}>elementalabsafrica.com</Out>,
+            ]}
+            title="Elementa Labs Africa"
           >
-            <h3 className="text-2xl font-semibold tracking-tight">Elementa Labs Africa</h3>
-            <p className="mt-3 leading-relaxed">
+            <p>
               I still remember sneaking out of school in the evenings to attend chemistry practicals
               at another school because we had very little access to a laboratory at my own school.
               Years later, after teaching maths and science myself, I started building a virtual lab
               for students who face a similar problem.
             </p>
-            <p className="mt-3 leading-relaxed">
+            <p>
               Elementa lets secondary school students carry out chemistry, physics and biology
               practicals that follow the West African WASSCE syllabus, with step-by-step guidance and
               automatic marking. Teachers can also assign practicals to their students.
             </p>
             <Shots shots={shots.elementa} layout="feature" />
-            <p className="mt-8 leading-relaxed">
+            <p className="pt-4">
               In the early rollout, to {elementa.asOf}, {elementa.students} students and{" "}
               {elementa.teachers} teachers registered. These are the practicals they used most.
             </p>
             <SessionsChart />
-          </Row>
-        </section>
+          </Entry>
+        </Section>
 
         {/* 3. Research */}
-        <section id="research" className="border-t border-ink pt-16">
-          <SectionHead label="Research" title="What I'm trying to understand" />
-
-          <Row
-            meta={
-              <>
-                <When>Ongoing</When>
-                <p>Grew out of Elementa</p>
-              </>
-            }
-          >
-            <div className="space-y-4 leading-relaxed">
-              <p>
-                While building Elementa, I started to wonder whether the steps students take during a
-                practical could say more about what they understand than their final answers.
-              </p>
-              <p>
-                Imagine two students doing a titration, adding liquid from a measuring tube called a
-                burette until the mixture changes colour. Both record the same wrong reading. One
-                handles the burette well but does not understand the chemistry. The other understands
-                the chemistry but struggles with the burette. Both may lose the same mark.
-              </p>
-            </div>
-            <p className="mt-6 text-2xl leading-snug text-burette">
-              How would a teacher know which student needs what kind of help?
+        <Section id="research" title="What I'm trying to understand">
+          <Entry meta={["Ongoing", "Grew out of Elementa"]}>
+            <p>
+              While building Elementa, I started to wonder whether the steps students take during a
+              practical could say more about what they understand than their final answers.
             </p>
-          </Row>
+            <p>
+              Imagine two students doing a titration, adding liquid from a measuring tube called a
+              burette until the mixture changes colour. Both record the same wrong reading. One
+              handles the burette well but does not understand the chemistry. The other understands
+              the chemistry but struggles with the burette. Both may lose the same mark.
+            </p>
+          </Entry>
 
-          <SequenceTrace />
+          <p className={`${col} mt-12 text-[1.5rem] font-medium leading-[1.3] tracking-[-0.015em] md:text-[1.75rem]`}>
+            How would a teacher know which student needs what kind of help?
+          </p>
 
-          <Row rule={false}>
-            <div className="rounded-[3px] border border-rule bg-[#fbfcfc] p-5">
-              <p className="text-sm font-medium uppercase tracking-[0.12em] text-muted">The research question</p>
-              <p className="mt-2 leading-relaxed">
-                Could the steps that led to a student&rsquo;s mistake, read alongside a separate test
-                of the ideas behind the experiment, tell us what kind of difficulty they are having?
-                And would seeing those steps laid out visually help a teacher decide what each
-                student needs?
-              </p>
-            </div>
-            <dl className="mt-6 grid gap-6 sm:grid-cols-2">
+          <div className="mx-auto mt-12 max-w-5xl">
+            <SequenceTrace />
+          </div>
+
+          <div className={`${col} mt-12`}>
+            <p className="text-sm text-muted">The research question</p>
+            <p className="mt-2 text-[1.0625rem] leading-[1.75] text-ink">
+              Could the steps that led to a student&rsquo;s mistake, read alongside a separate test of
+              the ideas behind the experiment, tell us what kind of difficulty they are having? And
+              would seeing those steps laid out visually help a teacher decide what each student
+              needs?
+            </p>
+
+            <div className="mt-10 grid gap-x-10 gap-y-8 sm:grid-cols-2">
               <div>
-                <dt className="font-semibold">What Elementa already records</dt>
-                <dd className="mt-2 leading-relaxed">
+                <h3 className="text-[0.9375rem] font-semibold">What Elementa already records</h3>
+                <p className="mt-2 text-[0.9375rem] leading-[1.7] text-ink/75">
                   Each student&rsquo;s mistakes and when they happen, their past attempts and their
                   skill scores. Since November 2026, it has also recorded every action at the bench in
                   order, and whether each checked step was right the first time. In titrations set by
                   a teacher, it compares the readings students write down with what the instrument
                   showed, so it can already tell a misread burette from a titration stopped at the
                   wrong point.
-                </dd>
+                </p>
               </div>
               <div>
-                <dt className="font-semibold">What it cannot tell yet</dt>
-                <dd className="mt-2 leading-relaxed">
+                <h3 className="text-[0.9375rem] font-semibold">What it cannot tell yet</h3>
+                <p className="mt-2 text-[0.9375rem] leading-[1.7] text-ink/75">
                   Why a student stopped where they did. That needs a fuller study, with consent and a
                   separate test of the ideas behind the experiment. The study has been designed and
                   will not run until it has ethics approval.
-                </dd>
+                </p>
               </div>
-            </dl>
-          </Row>
-        </section>
+            </div>
+          </div>
+        </Section>
 
         {/* 4. Contact */}
-        <section id="contact" className="border-t border-ink pb-6 pt-16">
-          <SectionHead label="Contact" title="Where I'm heading" />
+        <Section id="contact" title="Where I'm heading">
+          <div className={`${col} mt-10 space-y-4 ${body}`}>
+            <p>
+              Building Elementa has made me appreciate how much there is to learn beyond getting
+              software to work. I now want to study questions like these more rigorously, through
+              doctoral research.
+            </p>
+            <p>
+              Most of my work so far has been in education. But I trained as a laboratory scientist,
+              and I would love to work with scientists in other fields on how AI and interactive tools
+              could help them.
+            </p>
+            <p>
+              The things I think about most are human-computer interaction, artificial intelligence,
+              interactive data visualization, learning analytics and computing for scientific
+              discovery. I enjoy talking about ideas, especially with people who know things I do not.
+              If you are working on something related, or are just curious, I would be happy to hear
+              from you.
+            </p>
+          </div>
 
-          <Row meta={<When>Next</When>}>
-            <div className="space-y-4 leading-relaxed">
-              <p>
-                Building Elementa has made me appreciate how much there is to learn beyond getting
-                software to work. I now want to study questions like these more rigorously, through
-                doctoral research.
-              </p>
-              <p>
-                Most of my work so far has been in education. But I trained as a laboratory
-                scientist, and I would love to work with scientists in other fields on how AI and
-                interactive tools could help them.
-              </p>
-              <p>
-                The things I think about most are human-computer interaction, artificial
-                intelligence, interactive data visualization, learning analytics and computing for
-                scientific discovery. I enjoy talking about ideas, especially with people who know
-                things I do not. If you are working on something related, or are just curious, I
-                would be happy to hear from you.
-              </p>
-            </div>
-          </Row>
-
-          <Row meta={<When>Get in touch</When>}>
+          <div className={`${col} mt-12`}>
             <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
-              <a href={`mailto:${site.email}`} className="text-xl font-medium text-burette underline underline-offset-4 hover:no-underline">
+              <a
+                href={`mailto:${site.email}`}
+                className="text-xl font-medium text-burette underline underline-offset-4 hover:no-underline"
+              >
                 {site.email}
               </a>
               <CopyEmail
                 email={site.email}
-                className="rounded-[3px] border border-burette px-3 py-1 text-sm font-medium text-burette hover:bg-burette hover:text-white"
+                className="rounded-[3px] border border-burette px-3 py-1 text-sm font-medium text-burette transition-colors hover:bg-burette hover:text-white"
               />
             </div>
             <p className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
               {site.links.github && (
-                <a href={site.links.github} className={textLink}>
+                <a href={site.links.github} className="font-medium text-burette underline underline-offset-4 hover:no-underline">
                   GitHub
                 </a>
               )}
               {site.links.cv && (
-                <a href={site.links.cv} className={textLink}>
+                <a href={site.links.cv} className="font-medium text-burette underline underline-offset-4 hover:no-underline">
                   CV (PDF)
                 </a>
               )}
             </p>
-          </Row>
-        </section>
+          </div>
+        </Section>
       </main>
 
-      <footer className="mx-auto max-w-5xl px-6">
-        <div className="flex flex-wrap justify-between gap-2 border-t border-rule py-8 text-sm text-muted">
+      <footer className="mt-32 px-6">
+        <div className={`${col} flex flex-wrap justify-between gap-2 border-t border-rule py-8 text-sm text-muted`}>
           <span>
             {site.name}, {site.location}
           </span>

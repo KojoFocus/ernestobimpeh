@@ -55,21 +55,21 @@ export default function Header({ name, items }: { name: string; items: Item[] })
     <header
       className={`sticky top-0 z-30 border-b transition-[transform,background-color,border-color] duration-300 focus-within:translate-y-0 motion-reduce:transition-none ${
         tucked ? "-translate-y-full" : ""
-      } ${showName ? "border-rule bg-paper/90 backdrop-blur" : "border-transparent"}`}
+      } ${showName ? "border-ink/[0.07] bg-paper/85 backdrop-blur-md" : "border-transparent"}`}
     >
-      <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-6 py-4">
+      <div className="mx-auto flex max-w-[44rem] items-center justify-between gap-4 px-6 py-3.5 md:px-0">
         <a
           href="#top"
           tabIndex={showName ? 0 : -1}
           aria-hidden={!showName}
-          className={`hidden font-semibold tracking-tight transition-opacity sm:block ${
+          className={`hidden text-[0.9375rem] font-semibold tracking-[-0.01em] transition-opacity sm:block ${
             showName ? "opacity-100" : "pointer-events-none opacity-0"
           }`}
         >
           {name}
         </a>
         <nav aria-label="Main" className="ml-auto">
-          <ul className="flex gap-5 text-sm">
+          <ul className="flex gap-5 text-[0.875rem]">
             {items.map((n) => {
               const current = active === n.href;
               return (
@@ -78,9 +78,7 @@ export default function Header({ name, items }: { name: string; items: Item[] })
                     href={n.href}
                     aria-current={current ? "location" : undefined}
                     className={`inline-block py-1 ${
-                      current
-                        ? "text-ink underline decoration-burette decoration-2 underline-offset-[6px]"
-                        : "text-muted hover:text-ink"
+                      current ? "text-ink" : "text-muted transition-colors hover:text-ink"
                     }`}
                   >
                     {n.label}

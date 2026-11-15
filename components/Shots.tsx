@@ -43,8 +43,8 @@ export default function Shots({ shots, layout }: { shots: Shot[]; layout: "featu
       <div
         className={
           layout === "feature"
-            ? "mt-6 grid grid-cols-2 gap-x-3 gap-y-4"
-            : "mt-6 grid grid-cols-3 gap-x-2 gap-y-4 sm:gap-x-3"
+            ? "mt-8 grid grid-cols-2 gap-x-3 gap-y-5"
+            : "mt-8 grid grid-cols-3 gap-x-2 gap-y-5 sm:gap-x-3"
         }
       >
         {shots.map((s, i) => {
@@ -63,7 +63,7 @@ export default function Shots({ shots, layout }: { shots: Shot[]; layout: "featu
                   open(i);
                 }}
                 aria-label={`Enlarge: ${s.caption}`}
-                className={`block cursor-zoom-in overflow-hidden rounded-[6px] border border-rule transition-colors hover:border-burette focus-visible:border-burette ${frame}`}
+                className={`block cursor-zoom-in overflow-hidden rounded-lg ring-1 ring-ink/10 transition-shadow hover:ring-ink/30 ${frame}`}
               >
                 <Image
                   src={s.src}
@@ -80,7 +80,7 @@ export default function Shots({ shots, layout }: { shots: Shot[]; layout: "featu
                   className={wide ? "block h-auto w-full" : "block h-full w-full object-cover object-top"}
                 />
               </a>
-              <figcaption className="mt-2 text-sm text-muted">{s.caption}</figcaption>
+              <figcaption className="mt-2 text-[0.8125rem] leading-snug text-muted">{s.caption}</figcaption>
             </figure>
           );
         })}
@@ -111,7 +111,7 @@ export default function Shots({ shots, layout }: { shots: Shot[]; layout: "featu
             height={current.height}
             alt={current.alt}
             sizes="92vw"
-            className={`h-auto rounded-[6px] ${portrait ? "max-h-[78vh] w-auto" : "max-h-[78vh] w-full object-contain"}`}
+            className={`h-auto rounded-lg ${portrait ? "max-h-[78vh] w-auto" : "max-h-[78vh] w-full object-contain"}`}
           />
           <figcaption className="flex w-full flex-wrap items-center justify-between gap-3 text-sm text-white">
             <span>
@@ -124,10 +124,10 @@ export default function Shots({ shots, layout }: { shots: Shot[]; layout: "featu
             <span className="flex gap-2">
               {shots.length > 1 && (
                 <>
-                  <button type="button" onClick={() => step(-1)} className="rounded-[3px] border border-white/40 px-3 py-1.5 hover:bg-white/10">
+                  <button type="button" onClick={() => step(-1)} className="rounded-md px-3 py-1.5 text-white/75 transition-colors hover:bg-white/10 hover:text-white">
                     Previous
                   </button>
-                  <button type="button" onClick={() => step(1)} className="rounded-[3px] border border-white/40 px-3 py-1.5 hover:bg-white/10">
+                  <button type="button" onClick={() => step(1)} className="rounded-md px-3 py-1.5 text-white/75 transition-colors hover:bg-white/10 hover:text-white">
                     Next
                   </button>
                 </>
@@ -136,7 +136,7 @@ export default function Shots({ shots, layout }: { shots: Shot[]; layout: "featu
                 type="button"
                 onClick={() => dialog.current?.close()}
                 autoFocus
-                className="rounded-[3px] bg-white px-3 py-1.5 font-medium text-ink hover:bg-white/90"
+                className="rounded-md bg-white/10 px-3 py-1.5 text-white transition-colors hover:bg-white/20"
               >
                 Close
               </button>

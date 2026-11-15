@@ -34,12 +34,12 @@ summary:focus-visible {
   border-radius: 2px;
 }
 
-/* Lab-notebook grid, used only behind figures */
+/* Lab-notebook grid, used only behind figures. Kept faint so the drawing leads. */
 .notebook {
   background-color: #fbfcfc;
   background-image:
-    linear-gradient(var(--color-rule) 1px, transparent 1px),
-    linear-gradient(90deg, var(--color-rule) 1px, transparent 1px);
+    linear-gradient(color-mix(in srgb, var(--color-rule) 55%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--color-rule) 55%, transparent) 1px, transparent 1px);
   background-size: 24px 24px;
   background-position: -1px -1px;
 }

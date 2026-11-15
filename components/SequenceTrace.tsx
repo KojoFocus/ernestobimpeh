@@ -231,10 +231,10 @@ export default function SequenceTrace() {
   }, [mode, inView]);
 
   return (
-    <figure ref={ref} className="notebook rounded-[3px] border border-rule">
+    <figure ref={ref} className="notebook overflow-hidden rounded-xl ring-1 ring-ink/10">
       {/* `key={run}` restarts the drawing when Replay is pressed. */}
       <div key={run}>
-        <div className="hidden px-5 lg:block">
+        <div className="hidden px-6 py-2 lg:block">
           <Across mode={mode} />
         </div>
         <div className="px-4 pb-4 pt-5 lg:hidden">
@@ -242,7 +242,7 @@ export default function SequenceTrace() {
         </div>
       </div>
 
-      <figcaption className="flex flex-wrap items-center justify-between gap-3 border-t border-rule bg-paper px-4 py-3 text-sm text-muted">
+      <figcaption className="flex flex-wrap items-center justify-between gap-3 border-t border-ink/10 bg-paper/80 px-5 py-3 text-[0.8125rem] text-muted">
         <span>A sketch of the idea, not real student data.</span>
         {canAnimate && (
           <button
@@ -251,7 +251,7 @@ export default function SequenceTrace() {
               setMode("playing");
               setRun((r) => r + 1);
             }}
-            className="rounded-[3px] border border-burette px-3 py-1 font-medium text-burette transition-colors hover:bg-burette hover:text-white"
+            className="rounded-md px-2 py-1 text-muted underline decoration-ink/25 underline-offset-4 transition-colors hover:text-ink hover:decoration-ink"
           >
             Play again
           </button>
