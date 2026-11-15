@@ -1,5 +1,6 @@
 import CopyEmail from "@/components/CopyEmail";
 import Disclosure from "@/components/Disclosure";
+import ElementaShots from "@/components/ElementaShots";
 import SequenceTrace from "@/components/SequenceTrace";
 import SessionsChart from "@/components/SessionsChart";
 import { elementa, site } from "@/lib/site";
@@ -128,7 +129,8 @@ export default function Home() {
                 my own school. Years later, I started building a virtual lab for students who face a
                 similar problem.
               </p>
-              <p className="mt-6 text-sm text-muted">Early rollout, as of {elementa.asOf}</p>
+              <ElementaShots />
+              <p className="mt-8 text-sm text-muted">Early rollout, as of {elementa.asOf}</p>
               <dl className="mt-3 flex gap-10">
                 <div>
                   <dt className="text-sm text-muted">Students</dt>

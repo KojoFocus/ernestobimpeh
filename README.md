@@ -18,6 +18,7 @@ npm run build    # production build
 - `app/page.tsx`: all page copy and sections.
 - `components/SequenceTrace.tsx`: the animated hero figure (two students' action sequences). Edit the `lanes` array to change steps or notes.
 - `components/SessionsChart.tsx`: bar chart of sessions per practical.
+- `components/ElementaShots.tsx` and `public/elementa/`: the Elementa screenshots. To add or swap one, put the image in `public/elementa/` and add an entry (with its pixel size, caption and alt text) to the `shots` list.
 - `components/Disclosure.tsx`: the expandable "Research details".
 - `app/globals.css`: colour tokens (paper, ink, burette blue, endpoint pink) and the notebook grid.
 
