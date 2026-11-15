@@ -48,8 +48,66 @@ summary:focus-visible {
   font-variant-numeric: tabular-nums;
 }
 
+/* The page behind an enlarged screenshot should not scroll. */
+html:has(dialog[open]) {
+  overflow: hidden;
+}
+
+/* Sections and entries reached from the menu or the milestone line stop below the sticky header. */
+section[id],
+article[id] {
+  scroll-margin-top: 4.5rem;
+}
+
+/* Milestone line: draws left to right, stops fade in one by one. Motion only when allowed;
+   otherwise everything is simply there. */
+@media (prefers-reduced-motion: no-preference) {
+  .path-draw {
+    transform-origin: left;
+    animation: path-draw 2.2s linear 0.3s both;
+  }
+  .path-stop {
+    animation: path-stop 0.4s ease-out both;
+    animation-delay: calc(0.3s + var(--i, 0) * 0.28s);
+  }
+  /* A jump from the milestone line briefly tints the part of the story it lands on. */
+  article:target {
+    animation: target-tint 1.6s ease-out;
+  }
+}
+
+@keyframes path-draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes path-stop {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes target-tint {
+  from {
+    background-color: color-mix(in srgb, var(--color-burette) 9%, transparent);
+  }
+  to {
+    background-color: transparent;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  article:target {
+    box-shadow: inset 3px 0 0 var(--color-burette);
   }
 }

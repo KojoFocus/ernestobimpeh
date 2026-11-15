@@ -13,14 +13,18 @@ export default function SessionsChart() {
             <dt className="text-sm">{s.practical}</dt>
             <dd className="tabular text-sm font-semibold">{s.count}</dd>
             <div className="col-span-2 h-2 bg-rule" aria-hidden="true">
-              <div className="h-full bg-burette" style={{ width: `${(s.count / max) * 100}%` }} />
+              {/* Titration is the practical the research below is about, so its bar keeps the blue. */}
+              <div
+                className={`h-full ${s.practical === "Acid-base titration" ? "bg-burette" : "bg-muted/40"}`}
+                style={{ width: `${(s.count / max) * 100}%` }}
+              />
             </div>
           </div>
         ))}
       </dl>
       <figcaption className="mt-3 text-sm text-muted">
-        Sessions recorded in the {howMany} most-used practicals. These counts include some
-        teacher demonstrations and say nothing yet about learning.
+        Sessions recorded in the {howMany} most-used practicals. The counts include some teacher
+        demonstrations and say nothing yet about what students learned.
       </figcaption>
     </figure>
   );

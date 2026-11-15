@@ -1,6 +1,6 @@
-# Ernest Obimpeh research portfolio
+# Ernest Obimpeh
 
-Next.js 16 (App Router), TypeScript, Tailwind CSS 4, Motion.
+Personal, professional and research site. Next.js 16 (App Router), TypeScript, Tailwind CSS 4, Motion.
 
 ## Run
 
@@ -10,21 +10,33 @@ npm run dev      # http://localhost:3000
 npm run build    # production build
 ```
 
+## How the page is organised
+
+One story, in order. Each section has a short menu word above its heading and a heading that follows on from the one before:
+
+1. **Background**: Where I started
+2. **Work**: What I've been building (newest first)
+3. **Research**: What I'm trying to understand
+4. **Contact**: Where I'm heading
+
+Every section uses the same two-column row: when and what on the left, the story on the right. To add something new (a project, a paper, a talk), add a `Row` to the section it belongs to. Add a new section only when it has its first entry, and add it to `nav` in `app/page.tsx` at the same time.
+
 ## Where things are
 
-- `lib/site.ts`: your name, role, email, links, supervisor and Elementa session counts. A link left empty hides its button.
-- `public/ernest-obimpeh-cv.pdf`: the CV behind the "CV (PDF)" button. To update it, replace this file with the new PDF (keep the same name) and redeploy.
+- `lib/site.ts`: name, email, links, supervisor, the `updated` date, the milestone line (`path`, `now`), Elementa numbers and the screenshot lists. A link left empty hides it.
+- `app/page.tsx`: all page copy and sections.
+- `components/PathLine.tsx`: the milestone line under the name. Stops with an `href` jump to that part of the story. Keep it to about nine stops.
+- `components/Header.tsx`: the menu. It hides while you scroll down, comes back when you scroll up, and underlines the current section.
+- `components/Shots.tsx`: screenshot thumbnails that open larger on the page. Images live in `public/elementa/` and `public/pinn/`; add an entry (pixel size, caption, alt text) to `shots` in `lib/site.ts`.
+- `components/SequenceTrace.tsx`: the two-students figure. It draws itself when it scrolls into view. Edit `lanes` to change steps or notes.
+- `components/SessionsChart.tsx`: sessions per practical.
+- `components/CopyEmail.tsx`: the Copy button next to the email address.
+- `public/ernest-obimpeh-cv.pdf`: the CV. To update it, replace the file (same name) and redeploy.
 - `app/opengraph-image.tsx`: the preview card shown when the link is shared. `app/icon.svg` is the browser-tab icon.
-- `app/page.tsx`: all page copy and sections, told as one story in order: how it started, what I've built, the question it raised, where I'm heading.
-- `components/PathLine.tsx`: the line of milestones under the name. Its stops come from `path` and `now` in `lib/site.ts`; add a stop there when something new happens.
-- `components/SequenceTrace.tsx`: the animated hero figure (two students' action sequences). Edit the `lanes` array to change steps or notes.
-- `components/SessionsChart.tsx`: bar chart of sessions per practical.
-- `components/ElementaShots.tsx` and `public/elementa/`: the Elementa screenshots. To add or swap one, put the image in `public/elementa/` and add an entry (with its pixel size, caption and alt text) to the `shots` list.
-- `components/Disclosure.tsx`: the expandable "Research details".
-- `app/globals.css`: colour tokens (paper, ink, burette blue, endpoint pink) and the notebook grid.
+- `app/globals.css`: colour tokens, the notebook grid and the milestone-line animations.
 
-Motion respects the visitor's reduced-motion setting.
+Everything is readable before any script loads, and all motion respects the visitor's reduced-motion setting.
 
 ## Deploy
 
-Push to GitHub and import the repo on Vercel. No environment variables needed.
+Pushing to `main` on GitHub deploys to Vercel automatically. No environment variables needed.

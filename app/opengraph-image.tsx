@@ -53,7 +53,7 @@ export default async function Image() {
             {site.name}
           </span>
           <span style={{ marginTop: 28, fontSize: 36, lineHeight: 1.3, color: muted }}>
-            Laboratory scientist and software developer, {site.location}
+            Laboratory scientist and software developer in {site.location}
           </span>
         </div>
 
