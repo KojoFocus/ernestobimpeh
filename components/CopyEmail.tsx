@@ -3,19 +3,11 @@
 import { useEffect, useRef, useState } from "react";
 
 /**
- * Copies the email address, for visitors whose mailto link opens nothing (webmail users).
- * The address is also shown as text next to it, so if the browser blocks the clipboard
- * the visitor can still select it by hand.
+ * A small copy icon that sits right after the email address, for visitors whose mailto link
+ * opens nothing (webmail users). It swaps to a tick when copied. The address itself is shown
+ * as text, so if the browser blocks the clipboard the visitor can still select it by hand.
  */
-export default function CopyEmail({
-  email,
-  label = "Copy",
-  className,
-}: {
-  email: string;
-  label?: string;
-  className?: string;
-}) {
+export default function CopyEmail({ email }: { email: string }) {
   const [state, setState] = useState<"idle" | "copied" | "failed">("idle");
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -31,21 +23,27 @@ export default function CopyEmail({
     } catch {
       setState("failed");
     }
-    timer.current = setTimeout(() => setState("idle"), 2500);
+    timer.current = setTimeout(() => setState("idle"), 2000);
   }
 
-  const text = state === "copied" ? "Copied" : state === "failed" ? "Not copied" : label;
-  const widest = [label, "Copied", "Not copied"].reduce((a, b) => (b.length > a.length ? b : a));
-
   return (
-    <button type="button" onClick={copy} aria-label={`Copy ${email}`} className={className}>
-      {/* The hidden label reserves the width so the button does not change size. */}
-      <span className="grid">
-        <span aria-hidden="true" className="invisible col-start-1 row-start-1">
-          {widest}
-        </span>
-        <span className="col-start-1 row-start-1">{text}</span>
-      </span>
+    <button
+      type="button"
+      onClick={copy}
+      title={state === "copied" ? "Copied" : "Copy email address"}
+      aria-label="Copy email address"
+      className="relative inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-burette transition-colors hover:bg-burette/10"
+    >
+      <svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        {state === "copied" ? (
+          <path d="M3 8.5l3.2 3.2L13 5" />
+        ) : (
+          <>
+            <rect x="5.5" y="5.5" width="8" height="8" rx="1.5" />
+            <path d="M10.5 5.5V4A1.5 1.5 0 0 0 9 2.5H4A1.5 1.5 0 0 0 2.5 4v5A1.5 1.5 0 0 0 4 10.5h1.5" />
+          </>
+        )}
+      </svg>
       <span aria-live="polite" className="sr-only">
         {state === "copied" ? "Email address copied" : state === "failed" ? "Could not copy. Select the address instead." : ""}
       </span>

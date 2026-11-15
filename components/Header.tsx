@@ -69,7 +69,7 @@ export default function Header({ name, items }: { name: string; items: Item[] })
           {name}
         </a>
         <nav aria-label="Main" className="ml-auto">
-          <ul className="flex gap-5 text-[0.875rem]">
+          <ul className="flex flex-wrap justify-end gap-x-3.5 gap-y-1 text-[0.8125rem] sm:gap-x-5 sm:text-[0.875rem]">
             {items.map((n) => {
               const current = active === n.href;
               return (

@@ -294,17 +294,15 @@ export default function Home() {
           </div>
 
           <div className={`${col} mt-12`}>
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
+            {/* The copy icon stays on the same line as the address at every width. */}
+            <div className="flex items-center gap-1.5">
               <a
                 href={`mailto:${site.email}`}
-                className="text-xl font-medium text-burette underline underline-offset-4 hover:no-underline"
+                className="min-w-0 break-all text-lg font-medium text-burette underline underline-offset-4 hover:no-underline sm:text-xl"
               >
                 {site.email}
               </a>
-              <CopyEmail
-                email={site.email}
-                className="rounded-[3px] border border-burette px-3 py-1 text-sm font-medium text-burette transition-colors hover:bg-burette hover:text-white"
-              />
+              <CopyEmail email={site.email} />
             </div>
             <p className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
               {site.links.github && (
