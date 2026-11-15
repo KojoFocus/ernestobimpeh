@@ -1,8 +1,8 @@
 import { ImageResponse } from "next/og";
-import { site } from "@/lib/site";
+import { path, site } from "@/lib/site";
 
 // The preview card shown when the site link is shared (email, LinkedIn, WhatsApp, X).
-export const alt = `${site.name}: Same mistake. Same problem?`;
+export const alt = `${site.name}, ${site.role.toLowerCase()} in ${site.location}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -10,7 +10,7 @@ const paper = "#f3f6f6";
 const ink = "#1c2a33";
 const muted = "#5a6b73";
 const burette = "#2f5d7c";
-const endpoint = "#c93a72";
+const rule = "#c3cfd3";
 
 // Static TTF of the site font. If the download fails, the image falls back to the default font.
 async function loadFont(weight: number): Promise<ArrayBuffer | null> {
@@ -25,12 +25,6 @@ async function loadFont(weight: number): Promise<ArrayBuffer | null> {
     return null;
   }
 }
-
-// A small version of the hero figure: two sequences that end in the same error.
-const lanes: ("ok" | "retry" | "error")[][] = [
-  ["ok", "ok", "ok", "ok", "ok", "error"],
-  ["ok", "ok", "ok", "ok", "retry", "retry", "error"],
-];
 
 export default async function Image() {
   const [regular, semibold] = await Promise.all([loadFont(400), loadFont(600)]);
@@ -54,57 +48,52 @@ export default async function Image() {
           fontFamily: fonts.length ? "Schibsted Grotesk" : undefined,
         }}
       >
-        <div style={{ display: "flex", fontSize: 30, color: muted }}>
-          <span style={{ color: ink, fontWeight: 600 }}>{site.name}</span>
-          <span>, {site.location}</span>
+        <div style={{ display: "flex", flexDirection: "column", marginTop: 40 }}>
+          <span style={{ fontSize: 120, fontWeight: 600, lineHeight: 1, letterSpacing: -5 }}>
+            {site.name}
+          </span>
+          <span style={{ marginTop: 28, fontSize: 36, lineHeight: 1.3, color: muted }}>
+            Laboratory scientist and software developer, {site.location}
+          </span>
         </div>
 
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            fontSize: 116,
-            fontWeight: 600,
-            lineHeight: 1.02,
-            letterSpacing: -4,
-          }}
-        >
-          <span>Same mistake.</span>
-          <span>Same problem?</span>
-        </div>
-
-        <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between" }}>
-          <div style={{ display: "flex", flexDirection: "column", gap: 30, width: 560 }}>
-            {lanes.map((steps, li) => (
-              <div
-                key={li}
-                style={{
-                  display: "flex",
-                  position: "relative",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  height: 28,
-                }}
-              >
+        {/* The milestone line from the home page: solid dots, an open ring for now, then dashes. */}
+        <div style={{ display: "flex", flexDirection: "column", width: "100%" }}>
+          <div style={{ display: "flex", position: "relative", alignItems: "center", height: 28 }}>
+            <div style={{ position: "absolute", left: 10, right: 150, top: 12, height: 4, background: burette }} />
+            <div
+              style={{
+                position: "absolute",
+                right: 0,
+                width: 140,
+                top: 12,
+                height: 4,
+                backgroundImage: `linear-gradient(90deg, ${rule} 50%, transparent 50%)`,
+                backgroundSize: "16px 4px",
+              }}
+            />
+            <div style={{ display: "flex", justifyContent: "space-between", width: 916 }}>
+              {[...path, null].map((p, i) => (
                 <div
-                  style={{ position: "absolute", left: 4, right: 4, top: 12, height: 4, background: burette }}
+                  key={i}
+                  style={{
+                    width: 22,
+                    height: 22,
+                    borderRadius: 999,
+                    background: p ? burette : paper,
+                    border: p ? "none" : `4px solid ${burette}`,
+                  }}
                 />
-                {steps.map((kind, i) => (
-                  <div
-                    key={i}
-                    style={{
-                      width: kind === "error" ? 28 : 20,
-                      height: kind === "error" ? 28 : 20,
-                      borderRadius: 999,
-                      background: kind === "error" ? endpoint : kind === "retry" ? paper : burette,
-                      border: kind === "retry" ? `4px solid ${burette}` : "none",
-                    }}
-                  />
-                ))}
-              </div>
+              ))}
+            </div>
+          </div>
+          <div style={{ display: "flex", justifyContent: "space-between", width: 938, marginTop: 14, marginLeft: -8 }}>
+            {[...path.map((p) => p.year), "Now"].map((year, i) => (
+              <span key={i} style={{ width: 44, textAlign: "center", fontSize: 22, color: year === "Now" ? burette : muted }}>
+                {year}
+              </span>
             ))}
           </div>
-          <span style={{ fontSize: 28, color: muted }}>{site.role}</span>
         </div>
       </div>
     ),

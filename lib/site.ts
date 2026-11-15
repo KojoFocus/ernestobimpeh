@@ -14,6 +14,22 @@ export const site = {
   supervisor: "Samira Aggor-Woananu",
 };
 
+// The line of milestones under your name on the home page. When something new happens,
+// add a stop at the end; `now` always comes last.
+export const path = [
+  { year: "2012", label: "Taught maths and science" },
+  { year: "2014", label: "Studied lab technology" },
+  { year: "2016", label: "Started writing code" },
+  { year: "2018", label: "Worked in testing labs" },
+  { year: "2021", label: "Started keeping bees" },
+  { year: "2025", label: "Founded Elementa" },
+  { year: "2026", label: "Built PINN Ghana" },
+];
+export const now = {
+  lines: ["Exploring what students'", "mistakes can tell us"],
+  href: "#research",
+};
+
 // Elementa usage snapshot. The live numbers keep moving, so treat this as a dated snapshot:
 // refresh it from the Elementa dashboard when you update your CV, and change `asOf` with it.
 export const elementa = {
