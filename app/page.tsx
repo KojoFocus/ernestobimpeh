@@ -213,10 +213,16 @@ export default function Home() {
             How I got here
           </h2>
           <div className="mt-8 grid gap-6 md:grid-cols-[220px_1fr] md:gap-10">
-            <div className="text-sm text-muted md:pt-1">
-              <p className="font-medium text-ink">University of Cape Coast</p>
-              <p>BSc Laboratory Technology</p>
-              <p>2014 to 2018</p>
+            <div className="space-y-5 text-sm text-muted md:pt-1">
+              <div>
+                <p className="font-medium text-ink">University of Cape Coast</p>
+                <p>BSc Laboratory Technology</p>
+                <p>2014 to 2018</p>
+              </div>
+              <div>
+                <p className="font-medium text-ink">Generation Ghana and MEST Africa</p>
+                <p>GROW web development training, funded by the Mastercard Foundation</p>
+              </div>
             </div>
             <div className="max-w-[62ch] space-y-4 leading-relaxed">
               <p>
@@ -225,6 +231,11 @@ export default function Home() {
                 was a way to identify plants from a photograph; another was a way to find misplaced
                 keys. I later discovered that people were already working on such things. That made
                 me even more curious about computing.
+              </p>
+              <p>
+                I taught myself most of what I know about building software. I also benefited from a
+                web development training programme run by Generation Ghana and MEST Africa, with
+                funding from the Mastercard Foundation.
               </p>
               <p>
                 Building Elementa has made me appreciate how much there is to learn beyond getting
