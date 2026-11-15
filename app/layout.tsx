@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "@fontsource-variable/schibsted-grotesk";
 import "./globals.css";
 
-const title = "Ernest Obimpeh | Research portfolio";
+const title = "Ernest Obimpeh";
 const description =
   "Ernest Obimpeh: laboratory scientist and developer in Accra, Ghana, working on interactive systems for learning and scientific reasoning.";
 

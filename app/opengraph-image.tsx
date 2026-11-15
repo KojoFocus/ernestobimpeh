@@ -104,7 +104,7 @@ export default async function Image() {
               </div>
             ))}
           </div>
-          <span style={{ fontSize: 28, color: muted }}>Research portfolio</span>
+          <span style={{ fontSize: 28, color: muted }}>{site.role}</span>
         </div>
       </div>
     ),

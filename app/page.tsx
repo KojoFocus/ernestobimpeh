@@ -72,9 +72,10 @@ export default function Home() {
           </h2>
           <div className="mt-8 grid gap-10 md:grid-cols-[1fr_1fr]">
             <p className="text-2xl leading-snug text-burette">
-              Could visualizing the sequence of actions leading to an experimental error, alongside
-              independent assessments of conceptual understanding, help us distinguish between
-              different learning difficulties?
+              Could the sequence of actions leading to an experimental error, read alongside an
+              independent assessment of conceptual understanding, help us distinguish between
+              different learning difficulties? And would visualizing that sequence help a teacher
+              choose the right kind of help?
             </p>
             <div className="space-y-4 leading-relaxed">
               <p>
@@ -86,9 +87,15 @@ export default function Home() {
               <p>
                 Elementa already records timestamped procedural errors, attempt histories and skill
                 scores, and compares students&rsquo; recorded titration readings against actual
-                instrument values in assigned practicals. I have also developed, but not yet
-                deployed, an extension that captures more detailed sequences of student
-                interactions.
+                instrument values in assigned practicals. Since November 2026 it also records each
+                student&rsquo;s actions at the bench in order, and whether each judged step was right
+                the first time.
+              </p>
+              <p>
+                The titration bench can already tell a misread burette from a titration stopped at
+                the wrong point. What it cannot yet tell is why a student stopped where they did. A
+                fuller research version, with consent and a separate concept test, is designed and
+                will not run until it has ethics approval.
               </p>
               <p className="text-muted">
                 Education is where much of my current work lies, but it is not where my curiosity
@@ -231,14 +238,15 @@ export default function Home() {
           <h2 className="text-[clamp(1.8rem,3.4vw,2.6rem)] font-semibold leading-tight tracking-[-0.02em]">
             Let&rsquo;s talk science and technology
           </h2>
-          <p className="mt-6 max-w-[40ch] text-2xl leading-snug text-burette">
-            I am looking for PhD opportunities in{" "}
-            <span className="whitespace-nowrap">human-computer</span> interaction and learning
-            analytics.
+          <p className="mt-6 max-w-[44ch] text-2xl leading-snug text-burette">
+            <span className="whitespace-nowrap">Human-computer</span> interaction, artificial
+            intelligence, interactive data visualization, learning analytics and computing for
+            scientific discovery.
           </p>
           <p className="mt-4 max-w-[54ch] leading-relaxed">
-            I also enjoy talking about ideas, especially with people who know things I do not. If
-            you are working on something related to my interests, I would be happy to hear from you.
+            These are the things I think about most. I enjoy talking about them, especially with
+            people who know things I do not. If you are working on something related, I would be
+            happy to hear from you.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <a
