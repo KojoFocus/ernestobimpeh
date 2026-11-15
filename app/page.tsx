@@ -1,3 +1,4 @@
+import Link from "next/link";
 import CopyEmail from "@/components/CopyEmail";
 import Header from "@/components/Header";
 import PathLine from "@/components/PathLine";
@@ -268,6 +269,13 @@ export default function Home() {
                 </p>
               </div>
             </div>
+
+            <p className="mt-10 text-[1.0625rem]">
+              <Link href="/research/titration" className="font-medium text-burette underline underline-offset-4 hover:no-underline">
+                Try the idea on six made-up students
+              </Link>
+              <span className="text-muted"> · an interactive sketch</span>
+            </p>
           </div>
         </Section>
 

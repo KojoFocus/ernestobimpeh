@@ -31,6 +31,8 @@ Every section uses the same two-column row: when and what on the left, the story
 - `components/SequenceTrace.tsx`: the two-students figure. It draws itself when it scrolls into view. Edit `lanes` to change steps or notes.
 - `components/SessionsChart.tsx`: sessions per practical.
 - `components/CopyEmail.tsx`: the Copy button next to the email address.
+- `app/research/titration/page.tsx` and `components/sim/TitrationExplorer.tsx`: the interactive sketch at /research/titration. Six made-up students, the mark, their steps at the bench, a short concept check, and both together.
+- `lib/sim/titration.ts`: those six students' records, written by hand in the shape of Elementa's bench log (`[seconds, stage, action, material, right, code, putRight, helpOpen]`), with the concept questions and what each pattern might suggest. No real student data belongs in this repo.
 - `public/ernest-obimpeh-cv.pdf`: the CV. To update it, replace the file (same name) and redeploy.
 - `app/opengraph-image.tsx`: the preview card shown when the link is shared. `app/icon.svg` is the browser-tab icon.
 - `app/globals.css`: colour tokens, the notebook grid and the milestone-line animations.
