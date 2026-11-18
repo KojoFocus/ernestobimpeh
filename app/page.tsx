@@ -220,7 +220,12 @@ export default function Home() {
               Other work I&rsquo;ve been involved in
             </h3>
             <article id="exa-anesvad" className="mt-6">
-              <Meta items={["Ghana", "Community work", "Project coordination"]} />
+              <Meta items={[
+                "Ghana",
+                "Community work",
+                "Project coordination",
+                <Out key="l" href={site.links.exaanesvad}>exaanesvad.com</Out>,
+              ]} />
               <h4 className="mt-1.5 text-base font-semibold">EXA-ANESVAD</h4>
               <p className="mt-3 text-base leading-[1.75] text-ink/75">
                 I supported community initiatives in Ghana through coordinating field activities,

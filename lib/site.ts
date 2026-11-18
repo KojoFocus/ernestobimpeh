@@ -7,6 +7,7 @@ export const site = {
   links: {
     elementa: "https://elementalabsafrica.com",
     pinn: "https://pinnghana.com",
+    exaanesvad: "https://www.exaanesvad.com",
     github: "https://github.com/KojoFocus",
     // To update the CV, replace public/ernest-obimpeh-cv.pdf (same name) and redeploy.
     cv: "/ernest-obimpeh-cv.pdf",
